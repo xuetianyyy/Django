@@ -1,0 +1,84 @@
+{% extends "baseTemp/base_user_center.html" %}
+{% load staticfiles %}
+
+{# 标题及描述 #}
+{% block title %}
+	<title>天天生鲜-用户中心</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+{% endblock title %}
+
+{# 右侧主体 #}
+{% block right_content %}
+	<div id="order_pay_v">
+		<div class="right_content clearfix">
+				<h3 class="common_title2" data-token="{{ csrf_token }}" ref='token'>全部订单</h3>
+				{% for order in order_page %}
+					<ul class="order_list_th w978 clearfix">
+						<li class="col01">{{ order.create_time }}</li>
+						<li class="col02">订单号：{{ order.order_id }}</li>
+						{# 这是在视图中动态添加的属性 #}
+						<li class="col02 stress">{{ order.status_name }}</li>
+					</ul>
+
+					<table class="order_list_table w980">
+						<tbody>
+							<tr>
+								<td width="55%">
+									{% for order_sku in order.order_skus %}
+										<ul class="order_goods_list clearfix">
+											<li class="col01"><a href="{% url 'commod:detail' order_sku.sku.id %}"><img src="{{ order_sku.sku.image.url }}"></a></li>
+											<li class="col02">{{ order_sku.sku.name }}<em>{{ order_sku.sku.price }}元/{{ order_sku.sku.unite }}</em></li>
+											<li class="col03">{{ order_sku.count }}</li>
+											{# 这是在视图中动态添加的属性 #}
+											<li class="col04">{{ order_sku.total_price }}元</li>
+										</ul>
+									{% endfor %}
+								</td>
+								{# 使用过滤器加上运费 #}
+								<td width="15%">{{ order.amount_price }}元<br>(含运费:{{ order.transit_price }}元)</td>
+								{# 这是在视图中动态添加的属性 #}
+								<td width="15%">{{ order.status_name }}</td>
+								{% if order.order_status == 1 %}
+									<td width="15%"><a href="javascript:;" class="oper_btn" data-status="{{ order.order_status }}" data-order-id="{{ order.order_id }}" @click.prevent="order_pay">去付款</a></td>
+								{% else %}
+									<td width="15%">已支付<br><a href="javescript:;" class="oper_btn" data-status="{{ order.order_status }}" ref="order_handle" data-order-id="{{ order.order_id }}">{{ order.status_name }}</a></td>
+								{% endif %}
+							</tr>
+						</tbody>
+					</table>
+				{% endfor %}
+
+				<div class="pagenation">
+					{# 判断是否存在上一页 #}
+					{% if pages.has_previous %}
+					   <a href="{% url 'user_center_order:user_center_order' pages.previous_page_number %}"><上一页</a>
+					 {% else %}
+					   <span><a><上一页</a></span>
+					 {% endif %}
+
+					{# 页码显示 #}
+					{% for page_index in page_list %}
+						{% if page_index == pages.number %}
+							<a class="active">{{ page_index }}</a>
+						{% else %}
+							<a href="{% url 'user_center_order:user_center_order' page_index %}">{{ page_index }}</a>
+						{% endif %}
+					{% endfor %}
+
+					{# 判断是否存在下一页 #}
+					{% if pages.has_next %}
+					  <span><a href="{% url 'user_center_order:user_center_order' pages.next_page_number %}">下一页></a></span>
+					{% else %}
+					  <span><a>下一页></a></span>
+					{% endif %}
+				</div>
+		</div>
+	</div>
+{% endblock right_content %}
+
+{% block script %}
+	<script src="{% static 'js/vue.min.js' %}"></script>
+	<script src="{% static 'js/vue-resource.min.js' %}"></script>
+	<script src="{% static 'js/user_center_order.js' %}"></script>
+{% endblock script %}

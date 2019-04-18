@@ -1,0 +1,40 @@
+*** Starting uWSGI 2.0.18 (64bit) on [Thu Apr 18 00:33:28 2019] ***
+compiled with version: 7.3.0 on 17 April 2019 10:10:40
+os: Linux-4.15.0-47-generic #50-Ubuntu SMP Wed Mar 13 10:44:52 UTC 2019
+nodename: xt
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 2
+current working directory: /home/xuetianyyy/.virtualenvs/xt_py3/dailyfresh
+writing pidfile to uwsgi2.pid
+detected binary path: /home/xuetianyyy/.virtualenvs/xt_py3/bin/uwsgi
+chdir() to /home/xuetianyyy/.virtualenvs/xt_py3/dailyfresh
+your processes number limit is 7453
+your memory page size is 4096 bytes
+ *** WARNING: you have enabled harakiri without post buffering. Slow upload could be rejected on post-unbuffered webservers *** 
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8080).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.18 (64bit) on [Thu Apr 18 00:34:41 2019] ***
+compiled with version: 7.3.0 on 17 April 2019 10:10:40
+os: Linux-4.15.0-47-generic #50-Ubuntu SMP Wed Mar 13 10:44:52 UTC 2019
+nodename: xt
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 2
+current working directory: /home/xuetianyyy/.virtualenvs/xt_py3/dailyfresh
+writing pidfile to uwsgi2.pid
+detected binary path: /home/xuetianyyy/.virtualenvs/xt_py3/bin/uwsgi
+chdir() to /home/xuetianyyy/.virtualenvs/xt_py3/dailyfresh
+your processes number limit is 7453
+your memory page size is 4096 bytes
+ *** WARNING: you have enabled harakiri without post buffering. Slow upload could be rejected on post-unbuffered webservers *** 
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8080).
+bind(): Address already in use [core/socket.c line 769]

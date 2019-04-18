@@ -1,0 +1,5 @@
+# 指定根据表中的哪些字段建立索引
+# 注意: 这里的模型类会自动匹配, 对应应用里search_indexes.py中索引类所返回的模型类
+{{ object.name }}  # 为模型类CommodSKU的name属性建立索引, 这就相当于Model.objects.name
+{{ object.desc }}  # 为据模型类CommodSKU的desc属性建立索引
+{{ object.commod.detail }}  # 这是一个关联的外键字段, 也可以建立索引

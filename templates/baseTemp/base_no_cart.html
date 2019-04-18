@@ -1,0 +1,16 @@
+{# 用于购物车, 提交订单, 用户中心三个页面的父模板 #}
+{% extends "baseTemp/base.html" %}
+{% load staticfiles %}
+{# 网页顶部搜索块 #}
+{% block top_search_bar %}
+  <div class="search_bar clearfix">
+    <a href="{% url 'commod:index' %}" class="logo fl"><img src="{% static "images/logo.png" %}"></a>
+    <div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;{% block page_title %} {% endblock page_title %}</div>
+    <div class="search_con fr">
+      <form action="/search" method="get">
+        <input type="text" class="input_text fl" name="q" placeholder="搜索商品">
+        <input type="submit" class="input_btn fr" name="" value="搜索">
+      </form>
+    </div>
+  </div>
+{% endblock top_search_bar %}

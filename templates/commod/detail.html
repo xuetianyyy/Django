@@ -1,0 +1,180 @@
+{% extends "baseTemp/base_detail_list.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	<title>天天生鲜-商品详情</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+{% endblock title %}
+
+
+{# 详情页, 列表页主体内容预留块 #}
+{% block main_content %}
+	<div id="vue-app">
+		<div class="breadcrumb">
+			<a href="#">全部分类</a>
+			<span>></span>
+			<a href="#">{{ sku.ctype.name }}</a>
+			<span>></span>
+			<a href="#">商品详情</a>
+		</div>
+
+		<div class="goods_detail_con clearfix">
+			<div class="goods_detail_pic fl"><img src="{{ sku.image.url }}"></div>
+
+			<div class="goods_detail_list fr">
+				<h3>{{ sku.name }}</h3>
+				<p>{{ sku.desc }}</p>
+				<div class="prize_bar">
+					<span class="show_pirze">¥<em ref="price">{{ sku.price }}</em></span>
+					<span class="show_unit">单  位：{{ sku.unite }}</span>
+				</div>
+				<div class="goods_num clearfix">
+					<div class="num_name fl">数 量：</div>
+					<div class="num_add fl">
+						<input type="text" class="num_show fl" v-model='num_show' @blur="num_show_blur">
+						<a href="javascript:;" class="add fr" @click='num_add'>+</a>
+						<a href="javascript:;" class="minus fr" @click='num_minus'>-</a>
+					</div>
+					<div>
+						<p>其他规格:</p>
+						<ul>
+						{% for spu in same_spu_skus %}
+							<li><a href="{% url 'commod:detail' spu.id %}">{{ spu.name }}</a></li>
+						{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div class="total">总价：<em ref="total">{{ sku.price }}元</em></div>
+				<div class="operate_btn">
+					<a href="javascript:;" class="buy_btn">立即购买</a>
+					<a href="javascript:;" class="add_cart" id="add_cart" ref="add_cart" @click.prevent="postInfo">加入购物车</a>
+					<div class="add_jump" ref="add_jump" :style="add_jump_style"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="main_wrap clearfix">
+			<div class="l_wrap fl clearfix">
+				<div class="new_goods">
+					<h3>新品推荐</h3>
+					<ul>
+						{% for sku in new_skus %}
+							<li>
+								<a href="{% url 'commod:detail' sku.id %}"><img src="{{ sku.image.url }}"></a>
+								<h4><a href="{% url 'commod:detail' sku.id %}">{{ sku.name }}</a></h4>
+								<div class="prize">￥{{ sku.unite }}</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+
+			<div class="r_wrap fr clearfix">
+				<ul class="detail_tab clearfix">
+					<li class="active" @click="detail_active" ref="detail">商品介绍</li>
+					<li @click="comment_active" ref="comment">评论</li>
+				</ul>
+
+				<div class="tab_content" v-if="show_detail" >
+					<dl>
+						<dt>商品详情：</dt>
+						<dd>{{ sku.commod.detail|safe }}</dd>
+					</dl>
+				</div>
+
+				<div class="tab_content" v-if="show_comment">
+					<dl>
+						{# <dt>长度: {{ sku_orders|length }}</dt> #}
+						{% for order in sku_orders %}
+							<dt>评论时间：{{ order.updata_time }} &ensp;&ensp; 用户名：{{ order.order.user.username }}</dt>
+							<dd>评论内容: {{ order.comment }}</dd>
+						{% endfor %}
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock main_content %}
+
+
+{# 脚本 #}
+{% block script %}
+	<script src="{% static "js/vue.min.js" %}"></script>
+	<script src="{% static "js/vue-resource.min.js" %}"></script>
+	<script>
+		var vm = new Vue({
+			el: '#vue-app',
+			data: {
+				num_show: 1,  // 商品数量
+				add_cart: null,
+				show_count: null,
+				add_jump: null,
+				add_jump_style: null,
+				show_detail: true,
+				show_comment: false,
+				cls: 'active',
+			},
+			mounted: function(){
+				// 获取购物车数量元素
+				this.show_count = document.querySelector('#show_count');
+			},
+			methods: {
+				// 商品数量输入事件
+				num_show_blur: function(){
+					if(this.num_show = ' '){
+						this.num_show = 1
+					}else if(isNaN(parseInt(this.num_show))){
+						this.num_show = 1
+					}
+				},
+				// 添加商品数量
+				num_add: function(){
+					this.num_show += 1;
+					this.$refs.total.innerHTML = parseInt(this.num_show) * parseFloat(this.$refs.price.innerHTML) + '元';
+				},
+				// 减少商品数量
+				num_minus: function(){
+					this.num_show -= 1;
+					if(this.num_show < 1){
+						this.num_show = 1;
+					}
+					this.$refs.total.innerHTML = parseInt(this.num_show) * parseFloat(this.$refs.price.innerHTML) + '元';
+				},
+				// 发送post请求方法
+        postInfo: function(){
+          // emulateJSON: true代表以表单数据类型进行发送
+          // alert(this.add_cart)
+          resource_data = {
+          	csrfmiddlewaretoken: '{{ csrf_token }}',
+          	sku_id: '{{ sku.id }}',  // 从商品详情页传递过来的
+          	count: this.num_show,
+          },
+          this.$http.post("{% url 'cart:cart_add' %}", resource_data, {emulateJSON: true}).then(result => {
+          	if(result.body.res != 5){
+          		alert(result.body.errmsg);
+          	}else{
+          		// 添加成功, 重新渲染购物车的HTML内容
+          		this.show_count.innerHTML = result.body.total_count;
+          	}
+            console.log(result.body);
+          })
+        },
+        // 商品详情评论点击激活
+        detail_active: function(event){
+        	event.target.className = 'active';
+        	this.$refs.comment.className = '';
+        	this.show_detail = true;
+        	this.show_comment = false;
+        },
+        comment_active: function(event){
+        	event.target.className = 'active';
+        	this.$refs.detail.className = '';
+        	this.show_comment = true;
+        	this.show_detail = false;
+        },
+			},
+			delimiters: [ "[[", "]]" ],
+		})
+	</script>
+{% endblock script %}

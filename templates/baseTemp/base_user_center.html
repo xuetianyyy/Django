@@ -1,0 +1,38 @@
+{# 用户中心三页面 #}
+{% extends "baseTemp/base_no_cart.html" %}
+
+
+{# 搜索栏标题 #}
+{% block page_title %}用户中心{% endblock page_title %}
+
+{# 页面主体 #}
+{% block body %}
+	<div class="main_con clearfix">
+		<div class="left_menu_con clearfix">
+			<h3>用户中心</h3>
+			<ul>
+				<li>
+					<a href="{% url 'user:user_center_info' %}" {% if page == 'info' %}class="active"{% endif %}>
+						· 个人信息
+					</a>
+				</li>
+				<li>
+					<a href="{% url 'user:user_center_order' 1 %}" {% if page == 'order' %}class="active"{% endif %}>
+						· 全部订单
+					</a>
+				</li>
+				<li>
+					<a href="{% url 'user:user_center_site' %}" {% if page == 'site' %}class="active"{% endif %}>
+						· 收货地址
+					</a>
+				</li>
+			</ul>
+		</div>
+		{# 用户中心右侧主体 #}
+		{% block right_content %} {% endblock right_content %}
+	</div>
+{% endblock body %}
+
+{# {% block script %}
+
+{% endblock script %} #}

@@ -1,0 +1,101 @@
+{# 这是首页, 详情页, 列表页, 用户注册, 用户登录页的父模板 #}
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	{% block title %}
+		{# 页面标题和关键字及描述 #}
+	{% endblock title %}
+
+	<link rel="stylesheet" type="text/css" href="{% static "css/reset.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+	{% block resource_link %}
+		{# 自定义引入的外部资源 #}
+	{% endblock resource_link %}
+</head>
+<body>
+	{# 网站顶部欢迎信息 #}
+	{% block header %}
+		<div class="top_welcome">
+			<div class="header">
+				<div class="welcome fl">欢迎来到天天生鲜!</div>
+				<div class="fr">
+					{% if user.is_authenticated %}
+						{# 用户已登录 #}
+						<div class="login_btn fl">
+							欢迎您：<em>{{ user.username }}</em>
+							<span>|</span>
+							<a href="{% url 'commod:index' %}">返回首页</a>
+							<span>|</span>
+							<a href="{% url 'user:logout' %}">注销</a>
+						</div>
+					{% else %}
+						{# 用户未登录 #}
+						<div class="login_btn fl">
+							<a href="{% url 'commod:index' %}">返回首页</a>
+							<span>|</span>
+							<a href="{% url 'user:login' %}">登录</a>
+							<span>|</span>
+							<a href="{% url 'user:register' %}">注册</a>
+						</div>
+					{% endif %}
+					<div class="user_link fl">
+						<span>|</span>
+						<a href="{% url 'user:user_center_info' %}">用户中心</a>
+						<span>|</span>
+						<a href="{% url 'cart:cart' %}">我的购物车</a>
+						<span>|</span>
+						<a href="{% url 'user:user_center_order' 1 %}">我的订单</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock header %}
+
+	{# 顶部搜索栏 #}
+	{% block top_search_bar %}
+		<div class="search_bar clearfix">
+			<a href="{% url 'commod:index' %}" class="logo fl"><img src="{% static "images/logo.png" %}"></a>
+			<div class="search_con fl">
+				{# 表单提交的方式必须是get, 提交地址可自定义 #}
+				<form action="/search" method="get">
+					{# 注意: 搜索框必须的name属性值是固定的 name='q' #}
+					<input type="text" class="input_text fl" name="q" placeholder="搜索商品">
+					<input type="submit" class="input_btn fr" name="" value="搜索">
+				</form>
+			</div>
+
+			{% if user.is_authenticated %}
+				<div class="guest_cart fr">
+					<a href="{% url 'cart:cart' %}" class="cart_name fl">我的购物车</a>
+					<div class="goods_count fl" id="show_count">{{ cart_count }}</div>
+				</div>
+			{% endif %}
+		</div>
+	{% endblock top_search_bar %}
+
+	{# 网页主体部分 #}
+	{% block body %} {% endblock body %}
+
+	{# 网页底部 #}
+	{% block footer %}
+		<div class="footer">
+			<div class="foot_link">
+				<a href="#">关于我们</a>
+				<span>|</span>
+				<a href="#">联系我们</a>
+				<span>|</span>
+				<a href="#">招聘人才</a>
+				<span>|</span>
+				<a href="#">友情链接</a>
+			</div>
+			<p>CopyRight © 2016 北京天天生鲜信息技术有限公司 All Rights Reserved</p>
+			<p>电话：010-****888    京ICP备*******8号</p>
+		</div>
+	{% endblock footer %}
+
+	{# 底部js引入文件及代码 #}
+	{% block script %} {% endblock script %}
+</body>
+</html>

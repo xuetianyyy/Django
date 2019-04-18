@@ -1,0 +1,100 @@
+{% extends "baseTemp/base.html" %}
+{% load staticfiles %}
+
+{# 网页标题或描述 #}
+{% block title %}
+  <title>天天生鲜注册</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+{% endblock title %}
+
+{# 自定义css或外部资源 #}
+{% block resource_link %}
+  <script type="text/javascript" src="{% static 'js/vue.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/vue-resource.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/user-register.js' %}"></script>
+  <style>
+    [v-cloak]{
+        display: none;
+      }
+    </style>
+{% endblock resource_link %}
+
+{# 头部信息, 空 #}
+{% block header %}{% endblock header %}
+
+{# 顶部搜索框, 空 #}
+{% block top_search_bar %}{% endblock top_search_bar %}
+
+{# 主体部分 #}
+{% block body %}
+  <div id="user-register">
+    <div class="register_con">
+      <div class="l_con fl">
+        <a class="reg_logo"><img src="{% static 'images/logo02.png' %}"></a>
+        <div class="reg_slogan">足不出户 · 新鲜每一天</div>
+        <div class="reg_banner"></div>
+      </div>
+      <div class="r_con fr">
+        <div class="reg_title clearfix">
+          <h1>用户注册</h1>
+          <a href="{% url 'user:login' %}">登录</a>
+        </div>
+        <div class="reg_form clearfix">
+          <!-- <form method="post" action="/user/register">
+              {% csrf_token %} -->
+          <ul>
+            <li>
+              <label>用户名:</label>
+              <input type="text" v-model="user_name" id="user_name" @blur="ifuser=true">
+              <span class="error_tip" v-if="user_name == '' && ifuser" v-cloak>用户名不可为空</span>
+              <span class="error_tip" v-else-if="ifusername" v-cloak>用户名已注册</span>
+            </li>
+            <li>
+              <label>密码:</label>
+              <input type="password" v-model="pwd" id="pwd" @blur="ifpwd=true">
+              <span class="error_tip" v-if="pwd == '' && ifpwd" v-cloak>密码不可为空</span>
+            </li>
+            <li>
+              <label>确认密码:</label>
+              <input type="password" v-model="cpwd" id="cpwd" @blur="ifcpwd=true">
+              <span class="error_tip" v-if="(cpwd=='' || pwd!=cpwd) && ifcpwd" v-cloak>两次密码输入不同</span>
+            </li>
+            <li>
+              <label>邮箱:</label>
+              <input type="text" v-model="email" id="email" @blur="emiil">
+              <span class="error_tip" v-if="email == '' && ifemail" v-cloak>邮箱不可为空</span>
+              <span class="error_tip" v-else-if="error_emiil" v-cloak>邮箱格式不正确</span>
+              <span class="error_tip" v-else-if="ifemailname" v-cloak>邮箱已注册</span>
+            </li>
+            <li class="agreement">
+              <label>
+                <input type="checkbox" v-model="allow" id="allow" value='allow' checked="checked" @click="allow_token==1?allow_token=2:ifallow=!ifallow">
+                同意”天天生鲜用户使用协议“
+              </label>
+              <span class="error_tip2" v-if="ifallow" v-cloak>请同意协议</span>
+            </li>
+            <li class="reg_sub">
+              <input type="button" value="注 册" @click="submit">
+            </li>
+          </ul>
+          <!-- <div style="display: none;">{{ csrf_token }}</div> -->
+          <!-- </form> -->
+          <!-- {{ errmsg }} -->
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock body %}
+
+{# 脚本 #}
+{% block script %}
+  <script>
+    var cs_token = '{{ csrf_token }}'
+  </script>
+{% endblock script %}
+
+
+
+
+

@@ -1,0 +1,71 @@
+{% extends "baseTemp/base_detail_list.html" %}
+{% load staticfiles %}
+
+{% block title %}
+  <title>天天生鲜-商品搜索结果列表</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+{% endblock title %}
+
+
+{% block main_content %}
+  <div class="breadcrumb">
+    {# 搜索的关键字 #}
+    <a href="#">{{ query }}</a>
+    <span>></span>
+    <a href="#">搜索结果如下:</a>
+  </div>
+
+  <div class="main_wrap clearfix">
+    <div class="l_wrap fl clearfix">
+      <div class="new_goods" style="display: none;">
+      </div>
+    </div>
+
+    <div class="r_wrap fr clearfix">
+
+      <ul class="goods_type_list clearfix">
+        {# 遍历返回的page对象 #}
+        {% for item in page %}
+          <li>
+            {# item.object得到步骤一中对应的模型类对象 #}
+            <a href="{% url 'commod:detail' item.object.id %}"><img src="{{ item.object.image.url }}"></a>
+            <h4><a href="{% url 'commod:detail' item.object.id %}">{{ item.object.name }}</a></h4>
+            <div class="operate">
+              <span class="prize">￥{{ item.object.price }}</span>
+              <span class="unit">{{ item.object.price }}/{{ item.object.unite }}</span>
+              <a href="#" class="add_goods" title="加入购物车"></a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <div class="pagenation">
+        {# 判断是否存在上一页 #}
+        {% if page.has_previous %}
+          {# 这个路由地址代表: /search(提交给搜索框架), q=(查询的关键字), page=(查询的页码, 若不给则默认显示第一页) #}
+          <a href="/search?q={{ query }}&page={{ page.previous_page_number }}"><上一页</a>
+        {% else %}
+          <span><a><上一页</a></span>
+        {% endif %}
+
+        {# 页码显示 #}
+        {# paginator对象是自动传递过来的, 通过它的page_range属性得到分页页码的列表 #}
+        {% for page_index in paginator.page_range %}
+          {% if page_index == page.number %}
+            <a class="active">{{ page_index }}</a>
+          {% else %}
+            <a href="/search?q={{ query }}&page={{ page_index }}">{{ page_index }}</a>
+          {% endif %}
+        {% endfor %}
+
+        {# 判断是否存在下一页 #}
+        {% if page.has_next %}
+          <span><a href="/search?q={{ query }}&page={{ page.next_page_number }}">下一页</a></span>
+        {% else %}
+          <span><a>下一页></a></span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock main_content %}
