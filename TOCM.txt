@@ -1,0 +1,241 @@
+.
+├── apps
+│   ├── cart
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       └── __init__.cpython-36.pyc
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   │   ├── admin.cpython-36.pyc
+│   │   │   ├── __init__.cpython-36.pyc
+│   │   │   ├── models.cpython-36.pyc
+│   │   │   ├── tasks.cpython-36.pyc
+│   │   │   ├── urls.cpython-36.pyc
+│   │   │   └── views.cpython-36.pyc
+│   │   ├── tasks.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── commod
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       ├── 0001_initial.cpython-36.pyc
+│   │   │       └── __init__.cpython-36.pyc
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   │   ├── admin.cpython-36.pyc
+│   │   │   ├── __init__.cpython-36.pyc
+│   │   │   ├── models.cpython-36.pyc
+│   │   │   ├── search_indexes.cpython-36.pyc
+│   │   │   ├── tasks.cpython-36.pyc
+│   │   │   ├── urls.cpython-36.pyc
+│   │   │   └── views.cpython-36.pyc
+│   │   ├── search_indexes.py
+│   │   ├── tasks.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── __init__.py
+│   ├── order
+│   │   ├── admin.py
+│   │   ├── alipay_public_key.pem
+│   │   ├── app_private_key.pem
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_auto_20190405_0141.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       ├── 0001_initial.cpython-36.pyc
+│   │   │       ├── 0002_auto_20190405_0141.cpython-36.pyc
+│   │   │       └── __init__.cpython-36.pyc
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   │   ├── admin.cpython-36.pyc
+│   │   │   ├── __init__.cpython-36.pyc
+│   │   │   ├── models.cpython-36.pyc
+│   │   │   ├── tasks.cpython-36.pyc
+│   │   │   ├── urls.cpython-36.pyc
+│   │   │   └── views.cpython-36.pyc
+│   │   ├── tasks.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── __pycache__
+│   │   └── __init__.cpython-36.pyc
+│   └── user
+│       ├── admin.py
+│       ├── apps.py
+│       ├── __init__.py
+│       ├── migrations
+│       │   ├── 0001_initial.py
+│       │   ├── __init__.py
+│       │   └── __pycache__
+│       │       ├── 0001_initial.cpython-36.pyc
+│       │       └── __init__.cpython-36.pyc
+│       ├── models.py
+│       ├── __pycache__
+│       │   ├── admin.cpython-36.pyc
+│       │   ├── __init__.cpython-36.pyc
+│       │   ├── models.cpython-36.pyc
+│       │   ├── tasks.cpython-36.pyc
+│       │   ├── urls.cpython-36.pyc
+│       │   └── views.cpython-36.pyc
+│       ├── tasks.py
+│       ├── tests.py
+│       ├── urls.py
+│       └── views.py
+├── celerybeat-schedule
+├── dailyfresh
+│   ├── celery.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── celery.cpython-36.pyc
+│   │   ├── __init__.cpython-36.pyc
+│   │   ├── settings.cpython-36.pyc
+│   │   ├── urls.cpython-36.pyc
+│   │   └── wsgi.cpython-36.pyc
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── db
+│   ├── base_model.py
+│   ├── __init__.py
+│   └── __pycache__
+│       ├── base_model.cpython-36.pyc
+│       └── __init__.cpython-36.pyc
+├── manage.py
+├── package-lock.txt
+├── README.md
+├── static
+│   ├── css
+│   │   ├── main.css
+│   │   └── reset.css
+│   ├── html
+│   │   └── index.html
+│   ├── images
+│   │   ├── adv01.jpg
+│   │   ├── adv02.jpg
+│   │   ├── banner01.jpg
+│   │   ├── banner02.jpg
+│   │   ├── banner03.jpg
+│   │   ├── banner04.jpg
+│   │   ├── banner05.jpg
+│   │   ├── banner06.jpg
+│   │   ├── down.png
+│   │   ├── fruit.jpg
+│   │   ├── goods
+│   │   │   ├── goods001.jpg
+│   │   │   ├── goods002.jpg
+│   │   │   ├── goods003.jpg
+│   │   │   ├── goods004.jpg
+│   │   │   ├── goods005.jpg
+│   │   │   ├── goods006.jpg
+│   │   │   ├── goods007.jpg
+│   │   │   ├── goods008.jpg
+│   │   │   ├── goods009.jpg
+│   │   │   ├── goods010.jpg
+│   │   │   ├── goods011.jpg
+│   │   │   ├── goods012.jpg
+│   │   │   ├── goods013.jpg
+│   │   │   ├── goods014.jpg
+│   │   │   ├── goods015.jpg
+│   │   │   ├── goods016.jpg
+│   │   │   ├── goods017.jpg
+│   │   │   ├── goods018.jpg
+│   │   │   ├── goods019.jpg
+│   │   │   ├── goods020.jpg
+│   │   │   └── goods021.jpg
+│   │   ├── goods02.jpg
+│   │   ├── goods_detail.jpg
+│   │   ├── goods.jpg
+│   │   ├── icons02.png
+│   │   ├── icons.png
+│   │   ├── interval_line.png
+│   │   ├── left_bg.jpg
+│   │   ├── login_banner.png
+│   │   ├── logo02.png
+│   │   ├── logo.png
+│   │   ├── pay_icons.png
+│   │   ├── register_banner.png
+│   │   ├── shop_cart.png
+│   │   ├── slide02.jpg
+│   │   ├── slide03.jpg
+│   │   ├── slide04.jpg
+│   │   └── slide.jpg
+│   ├── js
+│   │   ├── cart.js
+│   │   ├── jquery-1.12.4.min.js
+│   │   ├── jquery.cookie.js
+│   │   ├── jquery-ui.min.js
+│   │   ├── place_order.js
+│   │   ├── register.js
+│   │   ├── slide.js
+│   │   ├── user_center_order.js
+│   │   ├── user-register.js
+│   │   ├── vue.min.js
+│   │   ├── vue-resource.min.js
+│   │   └── vue-router.min.js
+│   └── 天天生鲜数据库设计.xmind
+├── templates
+│   ├── baseTemp
+│   │   ├── base_detail_list.html
+│   │   ├── base.html
+│   │   ├── base_no_cart.html
+│   │   ├── base_user_center.html
+│   │   ├── static_base.html
+│   │   └── static_index.html
+│   ├── cart
+│   │   └── cart.html
+│   ├── commod
+│   │   ├── detail.html
+│   │   ├── index.html
+│   │   └── list.html
+│   ├── order
+│   │   ├── order_comment.html
+│   │   └── place_order.html
+│   ├── search
+│   │   ├── indexes
+│   │   │   └── commod
+│   │   │       └── commodsku_text.txt
+│   │   └── search.html
+│   └── user
+│       ├── login.html
+│       ├── register.html
+│       ├── user_center_info.html
+│       ├── user_center_order.html
+│       └── user_center_site.html
+├── TOCM.txt
+├── utils
+│   ├── fdfs
+│   │   ├── client.conf
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-36.pyc
+│   │   │   └── storage.cpython-36.pyc
+│   │   └── storage.py
+│   ├── __init__.py
+│   └── __pycache__
+│       └── __init__.cpython-36.pyc
+├── uwsgi2.ini
+├── uwsgi.ini
+├── uwsgi.log
+├── uwsgi.pid
+└── whoosh_index
+    ├── _MAIN_33.toc
+    ├── MAIN_al3t2pxlvh73juk6.seg
+    ├── MAIN_dfjzb9lsmfa0j0fm.seg
+    ├── MAIN_li5946yvzdhlvrph.seg
+    └── MAIN_WRITELOCK
+
+42 directories, 196 files
