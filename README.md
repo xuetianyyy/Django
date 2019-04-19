@@ -35,11 +35,11 @@
 + [end](#end)
 ---
 # 项目依赖包
-    - 项目中的所有依赖包, 都在**package-lock.txt**文件中
-    - 可以使用**pip3 isntall -r package-lock.txt**来安装它们
+- 项目中的所有依赖包, 都在**package-lock.txt**文件中
+- 可以使用**pip3 isntall -r package-lock.txt**来安装它们
 ---
 # 数据库方面
-    - 在项目**static**目录中的(**天天生鲜数据库设计.xmind**)文件中有详细介绍
+- 在项目**static**目录中的(**天天生鲜数据库设计.xmind**)文件中有详细介绍
 ---
 # 模板方面
 1. 在项目中使用了四个父模板
