@@ -31,6 +31,7 @@
         * [支付查询](#支付查询)
         * [订单评论](#订单评论)
 + [项目部署方面](#项目部署方面)
++ [图片效果预览](#图片效果预览)
 + [end](#end)
 ---
 # 数据库方面
@@ -380,5 +381,37 @@
 ![](http://www.weidong168.com/ttsx1.png "首页")
 
 > 首页
+
+![](http://www.weidong168.com/ttsx2.png "商品详情页")
+
+> 商品详情页
+
+![](http://www.weidong168.com/ttsx3.png "商品列表页")
+
+> 商品列表页
+
+![](http://www.weidong168.com/ttsx4.png "用户中心-个人信息页")
+
+> 用户中心-个人信息页
+
+![](http://www.weidong168.com/ttsx5.png "用户中心-地置页")
+
+> 用户中心-地置页
+
+![](http://www.weidong168.com/ttsx6.png "购物车页")
+
+> 购物车页
+
+![](http://www.weidong168.com/ttsx7.png "订单提交页")
+
+> 订单提交页
+
+![](http://www.weidong168.com/ttsx8.png "用户中心-订单详情页")
+
+> 用户中心-订单详情页
+
+![](http://www.weidong168.com/ttsx9.png "支付宝支付页面")
+
+> 支付宝支付页面
 
 # end
