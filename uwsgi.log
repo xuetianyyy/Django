@@ -145,3 +145,4 @@ Fri Apr 19 16:10:25 2019 - HARAKIRI [core 0] 127.0.0.1 - POST /order/pay_query s
 Fri Apr 19 16:10:25 2019 - HARAKIRI !!! end of worker 4 status !!!
 DAMN ! worker 4 (pid: 13664) died, killed by signal 9 :( trying respawn ...
 Respawned uWSGI worker 4 (new pid: 14667)
+Fri Apr 19 20:25:23 2019 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
