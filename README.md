@@ -388,39 +388,39 @@
 
 > 首页
 
-![](http://www.weidong168.com/ttsx1.png "首页")
+![](http://image.weidong168.com/ttsx1.png "首页")
 
 > 商品详情页
 
-![](http://www.weidong168.com/ttsx2.png "商品详情页")
+![](http://image.weidong168.com/ttsx2.png "商品详情页")
 
 > 商品列表页
 
-![](http://www.weidong168.com/ttsx3.png "商品列表页")
+![](http://image.weidong168.com/ttsx3.png "商品列表页")
 
 > 用户中心-个人信息页
 
-![](http://www.weidong168.com/ttsx4.png "用户中心-个人信息页")
+![](http://image.weidong168.com/ttsx4.png "用户中心-个人信息页")
 
 > 用户中心-地址页
 
-![](http://www.weidong168.com/ttsx5.png "用户中心-地址页")
+![](http://image.weidong168.com/ttsx5.png "用户中心-地址页")
 
 > 购物车页面
 
-![](http://www.weidong168.com/ttsx6.png "购物车页")
+![](http://image.weidong168.com/ttsx6.png "购物车页")
 
 > 订单提交页
 
-![](http://www.weidong168.com/ttsx7.png "订单提交页")
+![](http://image.weidong168.com/ttsx7.png "订单提交页")
 
 > 用户中心-订单详情页
 
-![](http://www.weidong168.com/ttsx8.png "用户中心-订单详情页")
+![](http://image.weidong168.com/ttsx8.png "用户中心-订单详情页")
 
 > 支付宝支付页面
 
-![](http://www.weidong168.com/ttsx9.png "支付宝支付页面")
+![](http://image.weidong168.com/ttsx9.png "支付宝支付页面")
 
 
 # end
